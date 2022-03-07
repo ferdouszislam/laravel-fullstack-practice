@@ -16,3 +16,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/food_items', function () {
+    
+    $pizza = [
+        'type' => 'Chicken BBQ',
+        'price' => 300,
+        'quantity' => '7 slices'
+    ];
+
+    // returns resources/views/sample.blade.php
+    return view('food_items', $pizza);
+});
