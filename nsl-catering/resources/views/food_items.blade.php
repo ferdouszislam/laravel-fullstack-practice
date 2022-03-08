@@ -1,27 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sample</title>
-</head>
-<body>
-    <div>
-        Available Food Items
-    </div>
+@extends('layouts.layout')
 
-    @foreach ($foodItems as $foodItem)
-        <p>
-            {{ $loop->index + 1 }}. {{ $foodItem['type'] }} - ({{ $foodItem['quantity'] }}) - {{ $foodItem['price'] }} BDT
-        </p>
-    @endforeach
+@section('content')
+<div>
+    Available Food Items
+</div>
 
-    <!-- can add raw php using blade too -->
-    {{-- @php
-        $name = 'hello from php';
-        echo $name;
-    @endphp --}}
+@foreach ($foodItems as $foodItem)
+    <p>
+        {{ $loop->index + 1 }}. {{ $foodItem['type'] }} - ({{ $foodItem['quantity'] }}) - {{ $foodItem['price'] }} BDT
+    </p>
+@endforeach
 
-</body>
-</html>
+<!-- can add raw php using blade too -->
+{{-- @php
+    $name = 'hello from php';
+    echo $name;
+@endphp --}}
+@endsection 
