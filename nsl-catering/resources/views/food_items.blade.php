@@ -4,13 +4,24 @@
 <div class="flex-center position-ref full-height">
     <div class="content">
         <div class="title m-b-md">
-            Available Food Items
+            Available Food Items 
+            @if ($limitFoodItems==null)
+                ( {{ count($foodItems) }} )
+            @else
+                ( {{ $limitFoodItems }} )
+            @endif
         </div>
 
         @foreach ($foodItems as $foodItem)
+
+            @if ($limitFoodItems != null and $loop->index >= $limitFoodItems)
+                @break
+            @endif
+
             <div>
-                {{ $loop->index + 1 }}. {{ $foodItem['type'] }} - ({{ $foodItem['quantity'] }}) - {{ $foodItem['price'] }} BDT
+                {{ $foodItem['type'] }} - ({{ $foodItem['quantity'] }}) - {{ $foodItem['price'] }} BDT
             </div>
+
         @endforeach
 
     </div>
