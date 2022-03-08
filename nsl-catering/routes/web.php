@@ -19,12 +19,12 @@ Route::get('/', function () {
 
 Route::get('/food_items', function () {
     
-    $pizza = [
-        'type' => 'Chicken BBQ',
-        'price' => 300,
-        'quantity' => '7 slices'
+    $foodItems = [
+        ['type' => 'Chicken Pizza', 'price' => 300, 'quantity' => '7 slices'],
+        ['type' => 'Cheese Burger', 'price' => 250, 'quantity' => 'extra large'],
+        ['type' => 'Mustard Salad', 'price' => 150, 'quantity' => '1 person']
     ];
 
     // returns resources/views/sample.blade.php
-    return view('food_items', $pizza);
+    return view('food_items', ['foodItems' => $foodItems]);
 });

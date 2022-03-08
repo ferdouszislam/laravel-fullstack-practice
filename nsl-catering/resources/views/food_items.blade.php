@@ -11,18 +11,11 @@
         Available Food Items
     </div>
 
-    <p> {{ $type }} - ({{ $quantity }}) - 
-
-    <!-- conditionals from blade template -->
-    @if($price > 300)
-        overpriced
-    @elseif($price < 100)
-        very cheap
-    @else
-        {{ $price }} BDT
-    @endif
-
-    </p>
+    @foreach ($foodItems as $foodItem)
+        <p>
+            {{ $loop->index + 1 }}. {{ $foodItem['type'] }} - ({{ $foodItem['quantity'] }}) - {{ $foodItem['price'] }} BDT
+        </p>
+    @endforeach
 
     <!-- can add raw php using blade too -->
     {{-- @php
