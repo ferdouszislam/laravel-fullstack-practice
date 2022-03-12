@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Helpers\DummyData;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,16 +20,8 @@ Route::get('/', function () {
 });
 
 Route::get('/food_items', function () {
-    
-    $foodItems = [
-        ['type' => 'Chicken Pizza', 'price' => 300, 'quantity' => '7 slices'],
-        ['type' => 'Cheese Burger', 'price' => 250, 'quantity' => 'extra large'],
-        ['type' => 'Plain Rice', 'price' => 100, 'quantity' => '1 plate'],
-        ['type' => 'Chicken Curry', 'price' => 120, 'quantity' => '2 pieces'],
-        ['type' => 'Beef Curry', 'price' => 150, 'quantity' => '2 pieces'],
-        ['type' => 'Fried Vegetable', 'price' => 100, 'quantity' => '1 person'],
-        ['type' => 'Mustard Salad', 'price' => 75, 'quantity' => '4 person']
-    ];
+
+    $foodItems = DummyData::$FOOD_ITEMS;
 
     $limitFoodItems = request('limitFoodItems') == null ? count($foodItems) : request('limitFoodItems');
 
@@ -35,5 +29,22 @@ Route::get('/food_items', function () {
     return view('food_items', [
         'foodItems' => $foodItems, 
         'limitFoodItems' => $limitFoodItems
+    ]);
+});
+
+
+Route::get('/food_item/{id}', function ($id) {
+
+    $foodItems = DummyData::$FOOD_ITEMS;
+
+    if($id < 0 || $id >= count($foodItems)) {
+        abort(404, 'food item not found');
+    }
+    // set $id = 0 if not found
+    // $id = ($id < 0 || $id >= count($foodItems)) ? 0 : $id;
+
+    // returns resources/views/sample.blade.php
+    return view('food_item', [
+        'foodItem' => $foodItems[$id]
     ]);
 });
