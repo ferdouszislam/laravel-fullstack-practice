@@ -17,7 +17,7 @@
     @endif
 
     <div class="content">
-        <img src="https://raw.githubusercontent.com/iamshaunjp/laravel-beginners-tutorial/lesson-9/pizzahouse/public/img/pizza-house.png" alt="pizza house logo">
+        <img src="/img/pizza_house.png" alt="pizza house logo">
         <div class="title m-b-md">
             NSL Catering Service
         </div>
