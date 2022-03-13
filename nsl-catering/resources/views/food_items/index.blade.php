@@ -22,9 +22,10 @@
 
             
             <div>
-                {{ $foodItem['name'] }} - ({{ $foodItem['quantity'] }}) - {{ $foodItem['price'] }} BDT
+                <strong>{{ $foodItem['name'] }}</strong> 
+                (<a href="{{ url('food_items/' . $foodItem['id']) }}">details</a>)
             </div>
-
+    
         @endforeach
 
     </div>
