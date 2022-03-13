@@ -21,6 +21,7 @@
         <div class="title m-b-md">
             NSL Catering Service
         </div>
+        <a href="{{ url('/food_items') }}">View available food items</a>
     </div>
 </div>
 @endsection

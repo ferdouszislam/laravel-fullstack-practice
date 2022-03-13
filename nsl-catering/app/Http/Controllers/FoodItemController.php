@@ -38,4 +38,29 @@ class FoodItemController extends Controller
             'foodItem' => $foodItem
         ]);
     }
+
+    public function create()
+    {
+        return view('food_items.create');
+    }
+
+    public function store(Request $request)
+    {
+        $data = $request->validate([
+            'name' => 'required|unique:food_items|string',
+            'description' => 'string',
+            'quantity' => 'required|string',
+            'price' => 'required|integer',
+        ]);
+
+        $foodItem = new FoodItem();
+        $foodItem->name = $data['name'];
+        $foodItem->description = $data['description'] == null ? "" : $data['description'];
+        $foodItem->quantity = $data['quantity'];
+        $foodItem->price = $data['price'];
+
+        $foodItem->save();
+
+        return redirect('/');
+    }
 }

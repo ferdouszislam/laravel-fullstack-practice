@@ -18,4 +18,9 @@ Route::get('/', function () {
 });
 
 Route::get('/food_items', 'FoodItemController@index');
+Route::post('/food_items', 'FoodItemController@store') -> name('food_items.store');
+
+// this route must be put before '/food_items/{id}' route
+Route::get('/food_items/create', 'FoodItemController@create');
+
 Route::get('/food_items/{id}', 'FoodItemController@show');
