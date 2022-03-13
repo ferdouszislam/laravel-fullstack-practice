@@ -4,15 +4,23 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Helpers\DummyData;
+use App\Models\FoodItem;
 
 class FoodItemController extends Controller
 {
 
+    const DEFAULT_PAGINATION_VALUE = 20;
+
     public function index()
     {
-        $foodItems = DummyData::$FOOD_ITEMS;
 
-        $limitFoodItems = request('limitFoodItems') == null ? count($foodItems) : request('limitFoodItems');
+        $limitFoodItems = FoodItemController::DEFAULT_PAGINATION_VALUE;
+        if(request('limitFoodItems') != null) $limitFoodItems = request('limitFoodItems');
+
+        // paginate() works with 'page' url parameter
+        $foodItems = FoodItem::paginate($limitFoodItems);
+        
+        $limitFoodItems = count($foodItems);
 
         // returns resources/views/sample.blade.php
         return view('food_items', [
@@ -23,17 +31,11 @@ class FoodItemController extends Controller
 
     public function show($id)
     {
-        $foodItems = DummyData::$FOOD_ITEMS;
-
-        if ($id < 0 || $id >= count($foodItems)) {
-            abort(404, 'food item not found');
-        }
-        // set $id = 0 if not found
-        // $id = ($id < 0 || $id >= count($foodItems)) ? 0 : $id;
+        $foodItem = FoodItem::findOrFail($id);
 
         // returns resources/views/sample.blade.php
         return view('food_item', [
-            'foodItem' => $foodItems[$id]
+            'foodItem' => $foodItem
         ]);
     }
 }
