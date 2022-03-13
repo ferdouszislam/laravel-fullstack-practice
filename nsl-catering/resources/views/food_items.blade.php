@@ -19,7 +19,7 @@
             @endif
 
             <div>
-                {{ $foodItem['type'] }} - ({{ $foodItem['quantity'] }}) - {{ $foodItem['price'] }} BDT
+                {{ $foodItem['name'] }} - ({{ $foodItem['quantity'] }}) - {{ $foodItem['price'] }} BDT
             </div>
 
         @endforeach
