@@ -20,6 +20,7 @@
                 @break
             @endif
 
+            
             <div>
                 {{ $foodItem['name'] }} - ({{ $foodItem['quantity'] }}) - {{ $foodItem['price'] }} BDT
             </div>
