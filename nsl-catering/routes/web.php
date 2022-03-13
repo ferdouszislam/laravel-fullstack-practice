@@ -18,4 +18,4 @@ Route::get('/', function () {
 });
 
 Route::get('/food_items', 'FoodItemController@index');
-Route::get('/food_item/{id}', 'FoodItemController@show');
+Route::get('/food_items/{id}', 'FoodItemController@show');

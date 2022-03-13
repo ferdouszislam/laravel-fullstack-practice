@@ -1,3 +1,5 @@
+<!-- show list of food items -->
+
 @extends('layouts.layout')
 
 @section('content')

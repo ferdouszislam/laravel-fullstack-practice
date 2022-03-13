@@ -1,3 +1,5 @@
+<!-- show sindle food item -->
+
 @extends('layouts.layout')
 
 @section('content')

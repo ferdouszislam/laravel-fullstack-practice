@@ -23,7 +23,7 @@ class FoodItemController extends Controller
         $limitFoodItems = count($foodItems);
 
         // returns resources/views/sample.blade.php
-        return view('food_items', [
+        return view('food_items.index', [
             'foodItems' => $foodItems,
             'limitFoodItems' => $limitFoodItems
         ]);
@@ -34,7 +34,7 @@ class FoodItemController extends Controller
         $foodItem = FoodItem::findOrFail($id);
 
         // returns resources/views/sample.blade.php
-        return view('food_item', [
+        return view('food_items.show', [
             'foodItem' => $foodItem
         ]);
     }
